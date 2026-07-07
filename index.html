@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#eef2f1">
+<title>上関原発ドキュメント｜44年の経緯を、事実で辿る</title>
+<meta name="description" content="山口県上関町の原子力発電所計画と使用済み核燃料中間貯蔵施設計画について、推進・反対双方の視点から経緯と論点を整理した情報サイト。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --ink:#14212b;
+    --ink-soft:#39505d;
+    --paper:#f2f5f4;
+    --paper-deep:#e4ebea;
+    --white:#ffffff;
+    --panel:#f3f6f7;
+    --sea:#1d567a;
+    --sea-deep:#153a52;
+    --num:#153a52;      /* 数字・年号などの強調テキスト */
+    --pro:#96661d;      /* 推進＝灯・琥珀 */
+    --pro-bg:#f7efdf;
+    --con:#20647a;      /* 反対＝海碧 */
+    --con-bg:#e3eff2;
+    --line:#c2cfce;
+    --serif:"Shippori Mincho",serif;
+    --sans:"Zen Kaku Gothic New",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#eaf1f4;
+      --ink-soft:#b9c9d2;
+      --paper:#121d24;
+      --paper-deep:#0c151b;
+      --white:#1a2831;
+      --panel:#1e2e38;
+      --sea:#8fc3dc;
+      --sea-deep:#132e3d;
+      --num:#9ed0e6;
+      --pro:#e2b269;
+      --pro-bg:#2b2315;
+      --con:#8cc4d6;
+      --con-bg:#12303b;
+      --line:#31474f;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.95;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--sea);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--con);outline-offset:2px;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ===== ヘッダー ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(238,242,241,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{font-family:var(--serif);font-weight:700;font-size:17px;letter-spacing:.14em;color:var(--ink);text-decoration:none;}
+  .brand small{font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.28em;color:var(--ink-soft);display:block;line-height:1;margin-top:2px;}
+  nav ul{display:flex;gap:22px;list-style:none;}
+  nav ul a{font-size:13px;letter-spacing:.12em;color:var(--ink-soft);text-decoration:none;}
+  nav ul a:hover{color:var(--sea);}
+  @media(max-width:760px){nav ul{display:none;}}
+
+  /* ===== ヒーロー ===== */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);
+    overflow:hidden;
+  }
+  .hero::after{ /* 海面の帯 */
+    content:"";position:absolute;left:0;right:0;bottom:0;height:7px;
+    background:linear-gradient(90deg,var(--sea-deep) 0 60%,var(--pro) 60% 100%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:64px;
+    align-items:center;padding:72px 0 88px;
+  }
+  .hero-body{max-width:640px;}
+  .eyebrow{font-size:12px;letter-spacing:.3em;color:var(--sea);font-weight:700;margin-bottom:14px;}
+  .hero-title{
+    font-family:var(--serif);font-weight:800;color:var(--ink);
+    font-size:clamp(34px,4.6vw,54px);
+    letter-spacing:.06em;line-height:1.5;margin-bottom:18px;
+  }
+  .hero-title em{font-style:normal;color:var(--sea);}
+  .hero-sub{
+    font-family:var(--serif);font-weight:700;color:var(--ink);
+    font-size:clamp(17px,2vw,21px);letter-spacing:.05em;line-height:2;
+    margin-bottom:20px;
+  }
+  .hero-body p{color:var(--ink-soft);font-size:15px;}
+  .hero-note{margin-top:20px;font-size:12.5px;color:var(--ink-soft);border-left:3px solid var(--line);padding-left:12px;line-height:1.8;}
+
+  /* カウントダウン */
+  .clocks{align-self:center;display:flex;flex-direction:column;gap:14px;min-width:300px;}
+  .clock{
+    background:var(--sea-deep);color:#ffffff;
+    padding:30px 32px 26px;
+    box-shadow:0 18px 40px rgba(21,58,82,.28);
+  }
+  .clock .label{font-size:12px;letter-spacing:.26em;color:#bcd6e2;font-weight:700;}
+  .clock .date{font-family:var(--serif);font-size:15px;margin-top:6px;letter-spacing:.1em;color:#ffffff;}
+  .clock .num{
+    font-family:var(--serif);font-weight:800;
+    font-size:clamp(58px,6.4vw,84px);line-height:1.05;color:#ffffff;
+    font-variant-numeric:tabular-nums;letter-spacing:.02em;
+    margin:8px 0 0;
+  }
+  .clock .unit{font-family:var(--sans);font-size:18px;font-weight:500;margin-left:6px;letter-spacing:.2em;}
+  .clock .hms{font-size:14px;letter-spacing:.12em;color:#dcebf2;font-variant-numeric:tabular-nums;margin-top:4px;}
+  .tide{margin-top:18px;}
+  .tide-bar{height:5px;background:#0d2432;position:relative;}
+  .tide-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#7fc0d6,#e0f2f9);}
+  .tide-cap{display:flex;justify-content:space-between;font-size:10.5px;color:#a6c4d3;letter-spacing:.14em;margin-top:6px;}
+  .clock .foot{font-size:11px;color:#a6c4d3;margin-top:14px;line-height:1.7;letter-spacing:.04em;}
+  .clock.mini{
+    background:var(--white);color:var(--ink);
+    border:1px solid var(--line);border-left:5px solid var(--con);
+    box-shadow:0 8px 22px rgba(21,58,82,.10);
+    padding:20px 24px 18px;
+  }
+  .clock.mini .label{color:var(--con);}
+  .clock.mini .date{color:var(--ink);font-size:13.5px;}
+  .clock.mini .num{font-size:40px;color:var(--ink);}
+  .clock.mini .unit{font-size:14px;}
+  .clock.mini .hms{color:var(--ink-soft);font-size:12.5px;}
+  .clock.mini .foot{color:var(--ink-soft);}
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;padding:56px 0 72px;}
+    .clocks{min-width:0;}
+  }
+
+  /* ===== セクション共通 ===== */
+  section{padding:88px 0;}
+  .sec-head{margin-bottom:48px;}
+  .sec-head .eyebrow{margin-bottom:8px;}
+  .sec-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.4vw,36px);letter-spacing:.1em;}
+  .sec-head p{color:var(--ink-soft);font-size:14.5px;max-width:640px;margin-top:12px;}
+
+  /* ===== 数字ストリップ ===== */
+  .strip{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .strip-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding:34px 26px;border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;}
+  .stat .v{font-family:var(--serif);font-weight:800;font-size:34px;color:var(--num);font-variant-numeric:tabular-nums;line-height:1.2;}
+  .stat .v small{font-size:16px;font-weight:700;}
+  .stat .k{font-size:12px;letter-spacing:.14em;color:var(--ink-soft);margin-top:6px;line-height:1.7;}
+  @media(max-width:820px){.strip-grid{grid-template-columns:repeat(2,1fr);}.stat:nth-child(3){border-left:none;}.stat{border-top:1px solid var(--line);}.stat:nth-child(-n+2){border-top:none;}}
+
+  /* ===== 年表 ===== */
+  .timeline{position:relative;margin-top:8px;}
+  .timeline::before{
+    content:"";position:absolute;left:150px;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg,var(--sea) 0%,var(--line) 100%);
+  }
+  .tl-item{position:relative;display:grid;grid-template-columns:120px 1fr;gap:62px;padding:26px 0;}
+  .tl-item::before{
+    content:"";position:absolute;left:144px;top:38px;width:14px;height:14px;
+    background:var(--paper);border:3px solid var(--sea);border-radius:50%;
+  }
+  .tl-item.major::before{background:var(--sea);width:16px;height:16px;left:143px;}
+  .tl-year{
+    font-family:var(--serif);font-weight:800;font-size:26px;color:var(--num);
+    text-align:right;font-variant-numeric:tabular-nums;line-height:1.3;
+  }
+  .tl-year small{display:block;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.2em;color:var(--ink-soft);}
+  .tl-body h3{font-family:var(--serif);font-size:18.5px;font-weight:700;letter-spacing:.06em;margin-bottom:6px;}
+  .tl-body p{font-size:14.5px;color:var(--ink-soft);max-width:620px;}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.16em;padding:3px 10px;margin-bottom:8px;border:1px solid;}
+  .tag.turn{color:#8a2f2f;border-color:#d8b3b3;background:#f7ecec;}
+  .tag.now{color:var(--sea);border-color:#a8c6d4;background:#e7f0f4;}
+  @media(max-width:700px){
+    .timeline::before{left:8px;}
+    .tl-item{grid-template-columns:1fr;gap:6px;padding-left:34px;}
+    .tl-item::before{left:2px;top:10px;}
+    .tl-item.major::before{left:1px;}
+    .tl-year{text-align:left;font-size:22px;}
+  }
+
+  /* ===== ふたつの声（賛否） ===== */
+  .voices{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);}
+  .voice{padding:44px 40px;}
+  .voice.pro{background:var(--pro-bg);border-right:1px solid var(--line);}
+  .voice.con{background:var(--con-bg);}
+  .voice h3{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .dot{width:12px;height:12px;border-radius:50%;flex:none;}
+  .voice.pro .dot{background:var(--pro);}
+  .voice.con .dot{background:var(--con);}
+  .voice .who{font-size:12px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:20px;}
+  .voice ul{list-style:none;}
+  .voice li{position:relative;padding:12px 0 12px 20px;font-size:14.5px;border-top:1px dashed rgba(30,42,50,.18);}
+  .voice li::before{content:"";position:absolute;left:0;top:22px;width:8px;height:2px;}
+  .voice.pro li::before{background:var(--pro);}
+  .voice.con li::before{background:var(--con);}
+  .voices .even{margin-top:26px;font-size:12.5px;color:var(--ink-soft);text-align:center;letter-spacing:.06em;}
+  @media(max-width:760px){.vs{grid-template-columns:1fr;}.voice.pro{border-right:none;border-bottom:1px solid var(--line);}}
+
+  /* ===== 争点：活断層 ===== */
+  .fault .panel{background:var(--white);border:1px solid var(--line);padding:40px;margin-top:8px;}
+  .fault .claims{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:26px;}
+  .claim{padding:24px;border-top:4px solid;}
+  .claim.a{border-color:var(--con);background:var(--con-bg);}
+  .claim.b{border-color:var(--pro);background:var(--pro-bg);}
+  .claim h4{font-family:var(--serif);font-size:16.5px;font-weight:700;margin-bottom:8px;letter-spacing:.04em;}
+  .claim p{font-size:14px;color:var(--ink-soft);}
+  .fault .caveat{margin-top:24px;font-size:12.5px;color:var(--ink-soft);border-left:3px solid var(--line);padding-left:14px;}
+  @media(max-width:760px){.fault .claims{grid-template-columns:1fr;}}
+
+  /* ===== 町の選択（議会・選挙） ===== */
+  .seats{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;max-width:520px;margin:26px 0 10px;}
+  .seat{aspect-ratio:1/1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;letter-spacing:.05em;}
+  .seat.p{background:var(--pro);}
+  .seat.c{background:var(--con);}
+  .seat.u{background:#9aa8ae;}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-soft);margin-top:8px;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .legend i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+  .choice-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start;}
+  .choice-grid .txt p{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px;}
+  @media(max-width:820px){.choice-grid{grid-template-columns:1fr;}}
+
+  /* ===== 人口構成 ===== */
+  .demo{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .demo-bar{display:flex;height:64px;overflow:hidden;margin-top:10px;}
+  .demo-seg{display:flex;flex-direction:column;justify-content:center;padding:0 4px;color:#fff;min-width:0;}
+  .demo-seg .pct{font-family:var(--serif);font-weight:800;font-size:clamp(15px,2.4vw,24px);line-height:1.2;white-space:nowrap;}
+  .demo-seg .cat{font-size:10px;letter-spacing:.08em;line-height:1.4;white-space:nowrap;}
+  .demo-seg.old{background:var(--sea-deep);padding-left:18px;}
+  .demo-seg.mid{background:#5d8296;padding-left:14px;}
+  .demo-seg.young{background:#a9bfc9;color:#14212b;padding-left:8px;}
+  .demo-cap{font-size:12px;color:var(--ink-soft);margin-top:10px;}
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:34px;}
+  .demo-facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .demo-fact{background:var(--paper);padding:20px 22px;}
+  .demo-fact .v{font-family:var(--serif);font-weight:800;font-size:26px;color:var(--num);font-variant-numeric:tabular-nums;line-height:1.3;}
+  .demo-fact .v small{font-size:14px;font-weight:700;}
+  .demo-fact .k{font-size:12px;color:var(--ink-soft);letter-spacing:.06em;line-height:1.7;margin-top:4px;}
+  .demo-txt p{font-size:15px;color:var(--ink-soft);margin-bottom:14px;}
+  .trend{margin-top:18px;}
+  .trend-row{display:grid;grid-template-columns:88px 1fr 58px;align-items:center;gap:12px;margin-top:9px;font-size:13px;}
+  .trend-row .y{font-family:var(--serif);font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .trend-row .bar{height:12px;background:var(--paper-deep);position:relative;}
+  .trend-row .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--sea);}
+  .trend-row .p{font-weight:700;color:var(--num);font-variant-numeric:tabular-nums;text-align:right;}
+  @media(max-width:820px){.demo-grid{grid-template-columns:1fr;}}
+
+
+  .sources{background:var(--sea-deep);color:#c9dbe4;}
+  .sources h2{font-family:var(--serif);color:var(--white);font-size:22px;letter-spacing:.12em;margin-bottom:22px;}
+  .sources ol{padding-left:20px;font-size:13px;line-height:2.1;}
+  .sources a{color:#9fc6d8;}
+  .sources .policy{margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);font-size:12.5px;line-height:2;}
+  footer{background:#122b3b;color:#7d9aa9;font-size:12px;text-align:center;padding:26px 20px;letter-spacing:.08em;}
+
+
+  /* ===== ダークモード個別調整 ===== */
+  @media (prefers-color-scheme: dark){
+    header{background:rgba(15,24,30,.92);}
+    .tag.turn{color:#f0b9b9;border-color:#6d3a3a;background:#331c1c;}
+    .tag.now{color:#9fd0e4;border-color:#2f5568;background:#12303f;}
+    .clock{box-shadow:0 18px 40px rgba(0,0,0,.45);}
+    .clock.mini{box-shadow:0 8px 22px rgba(0,0,0,.35);}
+    .tide-bar{background:#08151d;}
+    .voice li{border-top-color:rgba(255,255,255,.16);}
+    .brand{color:var(--ink);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">上関原発ドキュメント<small>KAMINOSEKI&nbsp;DOCUMENT</small></a>
+    <nav aria-label="ページ内リンク">
+      <ul>
+        <li><a href="#timeline">経緯</a></li>
+        <li><a href="#storage">中間貯蔵とは</a></li>
+        <li><a href="#voices">賛否の主張</a></li>
+        <li><a href="#fault">活断層</a></li>
+        <li><a href="#population">人口構成</a></li>
+        <li><a href="#choice">町の選択</a></li>
+        <li><a href="#sources">出典</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<div class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-body">
+      <p class="eyebrow">山口県熊毛郡上関町　人口約2,200人</p>
+      <h1 class="hero-title">町長選挙が、<em>やってくる</em>。</h1>
+      <p class="hero-sub">決戦は2026年10月。争点は使用済み核燃料の中間貯蔵施設、そして確認された活断層 ── 44年続く「原発の町」の分岐点。</p>
+      <p>
+        瀬戸内海の小さな港町に原発建設計画が浮上して44年。東日本大震災による工事中断を経て、いま町は中間貯蔵施設の受け入れという新たな選択を迫られています。
+        このサイトは、推進・反対のどちらの立場にも立たず、公開情報にもとづいて経緯と論点を整理する情報サイトです。
+      </p>
+      <p class="hero-note">
+        町長の任期満了は2026年10月22日。同じ秋、反対決議を可決した隣町・田布施でも町長選が行われます。
+      </p>
+    </div>
+    <div class="clocks">
+      <aside class="clock" aria-label="上関町長任期満了までのカウントダウン">
+        <p class="label">上関町長　任期満了まで</p>
+        <p class="date">2026年10月22日（木）</p>
+        <p class="num"><span id="cd-days">–</span><span class="unit">日</span></p>
+        <p class="hms" id="cd-hms">--:--:--</p>
+        <div class="tide">
+          <div class="tide-bar"><div class="tide-fill" id="tide" style="width:0%"></div></div>
+          <div class="tide-cap"><span>2022.10 就任</span><span>2026.10 満了</span></div>
+        </div>
+        <p class="foot">※投票日の正式な日程は町選挙管理委員会の告示をご確認ください。カウントダウンは任期満了日（10月22日）を基準にしています。</p>
+      </aside>
+      <aside class="clock mini" aria-label="田布施町長任期満了までのカウントダウン">
+        <p class="label">隣町・田布施町長　任期満了まで</p>
+        <p class="date">2026年11月14日（土）</p>
+        <p class="num"><span id="cd2-days">–</span><span class="unit">日</span></p>
+        <p class="hms" id="cd2-hms">--:--:--</p>
+        <p class="foot">※投開票は2026年10月の見込み（報道による）。反対決議を可決した隣町でも、同時期に町長選が行われます。</p>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- 数字ストリップ -->
+<div class="strip">
+  <div class="wrap strip-grid">
+    <div class="stat"><p class="v">44<small>年</small></p><p class="k">計画浮上（1982年）からの年月</p></div>
+    <div class="stat"><p class="v">約3.5<small>km</small></p><p class="k">予定地から離島・祝島までの距離</p></div>
+    <div class="stat"><p class="v">110<small>億円超</small></p><p class="k">交付金・寄付金として町に入った資金</p></div>
+    <div class="stat"><p class="v">6<small>：</small>4</p><p class="k">選挙で固定化してきたとされる推進派と反対派の得票比</p></div>
+  </div>
+</div>
+
+<!-- 経緯 -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">TIMELINE</p>
+      <h2>44年の経緯</h2>
+      <p>1982年の計画浮上から現在まで。町・中国電力・国それぞれの動きを時系列で辿ります。</p>
+    </div>
+
+    <!-- ▼ 写真の入れ方：下の<figure>内のコメントを外し、src="画像ファイル名" を差し替えてください。
+         著作権フリーの写真は Wikimedia Commons（「上関町」「祝島」「上関大橋」で検索）や、
+         ご自身で撮影した写真をご利用ください。報道機関の写真の転載は避けてください。 -->
+    <figure class="photo">
+      <div class="frame">
+        <!-- <img src="tanoura.jpg" alt="上関町長島・田ノ浦の原発予定地と瀬戸内海"> -->
+        <p class="ph-note">写　真<br><span style="font-size:11px;letter-spacing:.06em;">田ノ浦の予定地・祝島・上関大橋などの写真をここに（HTML内の説明参照）</span></p>
+      </div>
+      <figcaption>例：原発予定地の田ノ浦海岸と、対岸約3.5kmに浮かぶ祝島。</figcaption>
+    </figure>
+
+
+    <div class="timeline">
+      <div class="tl-item major">
+        <div class="tl-year">1982<small>SHOWA 57</small></div>
+        <div class="tl-body">
+          <h3>原発建設計画が浮上</h3>
+          <p>中国電力が上関町長島・田ノ浦に改良型沸騰水型軽水炉（ABWR）2基、出力計約274万kWの原子力発電所を建設する計画を発表。過疎化が進む町で、地域振興への期待と生活環境・漁業への不安から、住民の意見は賛否に分かれ始めます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1988<small>SHOWA 63</small></div>
+        <div class="tl-body">
+          <h3>町が誘致を正式に申し入れ</h3>
+          <p>上関町が中国電力に原発誘致を正式に申し入れ。以後の町長選挙では推進派の候補が連続して当選し、町議会でも推進派が多数を占める構図が続きます。一方、予定地の対岸に位置する祝島では反対運動が継続します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2001<small>HEISEI 13</small></div>
+        <div class="tl-body">
+          <h3>国の電源開発基本計画に組み入れ</h3>
+          <p>山口県知事が安全確保など条件付きの意見を提出し、国は上関原発を電源開発基本計画に組み入れ。計画が国のエネルギー政策上の位置づけを得ます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2008<small>HEISEI 20</small></div>
+        <div class="tl-body">
+          <h3>県が公有水面の埋立てを免許</h3>
+          <p>山口県が予定地前面の海の埋立てを免許。翌2009年には中国電力が国に原子炉設置許可を申請し、埋立て・準備工事に着手。海上では反対派住民との間で衝突や訴訟も起きました。</p>
+        </div>
+      </div>
+      <div class="tl-item major">
+        <div class="tl-year">2011<small>HEISEI 23</small></div>
+        <div class="tl-body">
+          <span class="tag turn">転機</span>
+          <h3>東日本大震災 ── 計画が止まる</h3>
+          <p>3月11日、東京電力福島第一原発の事故を受けて、上関原発の埋立て工事は中断。国による原子炉設置許可の審査も止まり、計画は事実上の凍結状態に。町に入る国の交付金は大きく減少し、町財政の悪化が進みます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2016<small>HEISEI 28</small></div>
+        <div class="tl-body">
+          <h3>訴訟の和解、続く「準備」</h3>
+          <p>工事妨害をめぐる中国電力と反対派住民の訴訟が和解。中国電力は原発計画自体は維持し、以後も海上ボーリング調査など工事着手に向けた準備作業を断続的に試みます（2020年には抗議活動などにより海底地質調査を中断）。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2022<small>REIWA 4</small></div>
+        <div class="tl-body">
+          <h3>西哲夫町長が就任</h3>
+          <p>11年ぶりの選挙戦となった町長選で、推進派の西哲夫氏が約7割の得票で初当選。交付金の減少で悪化した町財政を背景に、町は中国電力へ新たな地域振興策を求めます。</p>
+        </div>
+      </div>
+      <div class="tl-item major">
+        <div class="tl-year">2023<small>REIWA 5</small></div>
+        <div class="tl-body">
+          <span class="tag turn">転機</span>
+          <h3>中間貯蔵施設の計画が浮上</h3>
+          <p>8月、中国電力が関西電力と共同で、原発予定地の敷地内に使用済み核燃料の中間貯蔵施設（貯蔵量2,000トン規模）を建設する構想を町に提案。町は立地可能性調査の受け入れを決め、調査が始まります。原発の敷地外の中間貯蔵施設としては青森県むつ市に次ぐ全国2例目となる可能性があり、賛否の議論が再燃しました。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2024<small>REIWA 6</small></div>
+        <div class="tl-body">
+          <h3>掘削調査が終了</h3>
+          <p>中国電力が敷地内11か所で行っていたボーリング掘削調査を11月に終了。岩盤の年代や活断層の有無を確認するための分析に入ります。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2025<small>REIWA 7</small></div>
+        <div class="tl-body">
+          <h3>周辺自治体で初の反対決議、そして「立地は可能」の報告書</h3>
+          <p>3月、上関町に隣接する田布施町の議会が、中間貯蔵施設の建設に反対する決議を賛成多数で可決。周辺自治体の議会による反対表明は初めてで、決議は「建設の是非を上関町だけで判断することは許されない」と指摘しました。一方8月には、中国電力が「敷地に活断層は認められず、硬い岩盤が分布しており、立地は可能」とする調査報告書を上関町に提出。ただし貯蔵容量などを示す具体的な事業計画は示されず、西町長は受け入れの可否について判断を保留しています。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2026<small>REIWA 8</small></div>
+        <div class="tl-body">
+          <span class="tag now">現在</span>
+          <h3>断層の新知見、8年ぶりの選挙戦、そして町長選へ</h3>
+          <p>2月の町議選（定数10）では中間貯蔵施設への賛成派5人・反対派3人・態度未表明2人が当選。西町長は「議会構成は賛成6・反対4になる」との見方を示しました。同時期、産総研の調査により、上関沖を含む海域に延びる海底活断層「防予諸島断層帯」が7千〜1万年に1度の周期でM7以上の大地震を起こすと推定されることが判明（詳細は「争点：活断層」参照）。10月には町長の任期が満了し、中間貯蔵施設と原発計画の行方を左右する町長選挙を迎えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 中間貯蔵施設とは -->
+<section class="explain" id="storage">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">WHAT IS IT ?</p>
+      <h2>そもそも「中間貯蔵施設」とは</h2>
+      <p>いま上関町が受け入れの可否を問われている施設です。名前だけでは想像しにくいので、基本から整理します。</p>
+    </div>
+
+    <figure style="margin:0 0 10px;">
+      <svg viewBox="0 0 780 300" role="img" aria-label="使用済み核燃料の流れの概略図" style="width:100%;height:auto;display:block;">
+        <!-- 原発 -->
+        <rect x="10" y="60" width="150" height="86" fill="var(--paper-deep)" stroke="var(--line)"/>
+        <text x="85" y="96" font-size="15" font-weight="700" fill="var(--ink)" text-anchor="middle">原子力発電所</text>
+        <text x="85" y="118" font-size="11.5" fill="var(--ink-soft)" text-anchor="middle">使用済み燃料が発生</text>
+        <text x="85" y="134" font-size="11.5" fill="var(--ink-soft)" text-anchor="middle">プールは満杯に近づく</text>
+        <!-- 矢印1 -->
+        <path d="M165,103 L215,103" stroke="var(--sea)" stroke-width="3" marker-end="url(#ar)"/>
+        <!-- 中間貯蔵 -->
+        <rect x="225" y="48" width="180" height="110" fill="var(--con-bg)" stroke="var(--con)" stroke-width="2"/>
+        <text x="315" y="82" font-size="15" font-weight="800" fill="var(--ink)" text-anchor="middle">中間貯蔵施設</text>
+        <text x="315" y="104" font-size="11.5" fill="var(--ink-soft)" text-anchor="middle">金属キャスクで一時保管</text>
+        <text x="315" y="120" font-size="11.5" fill="var(--ink-soft)" text-anchor="middle">むつ市の例：最長50年</text>
+        <text x="315" y="142" font-size="11" font-weight="700" fill="var(--con)" text-anchor="middle">▲ 上関で計画中はコレ</text>
+        <!-- 矢印2 -->
+        <path d="M410,103 L460,103" stroke="var(--sea)" stroke-width="3" marker-end="url(#ar)"/>
+        <!-- 再処理 -->
+        <rect x="470" y="48" width="180" height="110" fill="var(--paper-deep)" stroke="var(--line)"/>
+        <text x="560" y="82" font-size="15" font-weight="700" fill="var(--ink)" text-anchor="middle">再処理工場</text>
+        <text x="560" y="104" font-size="11.5" fill="var(--ink-soft)" text-anchor="middle">青森県六ヶ所村・未完成</text>
+        <text x="560" y="120" font-size="11.5" fill="var(--ink-soft)" text-anchor="middle">完成延期27回</text>
+        <text x="560" y="142" font-size="11" fill="var(--ink-soft)" text-anchor="middle">目標：2026年度中</text>
+        <!-- 分岐矢印 -->
+        <path d="M655,80 C700,70 710,60 730,55" stroke="var(--pro)" stroke-width="3" fill="none" marker-end="url(#ar2)"/>
+        <text x="672" y="40" font-size="12" fill="var(--pro)" font-weight="700">燃料として再利用</text>
+        <path d="M655,130 C700,145 710,180 715,215" stroke="#b3261e" stroke-width="3" fill="none" marker-end="url(#ar3)"/>
+        <!-- 最終処分 -->
+        <rect x="560" y="225" width="200" height="62" fill="none" stroke="#b3261e" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="660" y="251" font-size="14" font-weight="800" fill="#b3261e" text-anchor="middle">高レベル廃棄物の最終処分場</text>
+        <text x="660" y="272" font-size="12" font-weight="700" fill="#b3261e" text-anchor="middle">場所は決まっていない</text>
+        <defs>
+          <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--sea)"/></marker>
+          <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--pro)"/></marker>
+          <marker id="ar3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b3261e"/></marker>
+        </defs>
+      </svg>
+      <figcaption style="font-size:11.5px;color:var(--ink-soft);margin-top:6px;">使用済み核燃料の流れ（国の核燃料サイクル政策の概略・当サイト作成）</figcaption>
+    </figure>
+
+    <div class="qa">
+      <h3><span>Q.</span>何をする施設？</h3>
+      <p>原発で使い終わった核燃料（使用済み核燃料）を、再処理するまでの間、一時的に保管する施設です。燃料は「金属キャスク」と呼ばれる密封容器に入れられ、建屋内に並べて貯蔵されます。容器を開けたり燃料を加工したりする作業は行われず、外気の自然対流で冷却し続けます（乾式貯蔵）。</p>
+      <p>なぜ必要とされるかというと、搬出先であるはずの六ヶ所再処理工場（青森県）が1993年の着工から完成延期を27回重ね、いまだ稼働していないためです。行き場のない使用済み燃料が各原発の貯蔵プールに溜まり続けており、満杯になれば原発は運転を続けられなくなります。</p>
+    </div>
+
+    <div class="qa">
+      <h3><span>Q.</span>再処理工場が完成すれば、中間貯蔵はいらないのでは？</h3>
+      <p>完成しても不要にはならない、というのが実情です。理由は3つあります。第一に、六ヶ所の処理能力は最大でも年間800トンですが、日本にはすでに約1万9,000トンの使用済み燃料が溜まっており、フル稼働しても在庫の解消には数十年かかります。第二に、工場に併設された受け入れプール（容量3,000トン）はすでにほぼ満杯で、完成後も各原発から一斉に送り込めるわけではありません。第三に、「2026年度中の完成」自体が27回の延期を経た目標であり、青森県知事が「新たな工程を示しても信頼できない」と述べるなど、確実とは見られていません。</p>
+      <p>また上関の計画には固有の背景があります。この施設は中国電力と関西電力の共同計画で、関西電力は原発が立地する福井県に対し「使用済み燃料を県外へ搬出する」と約束してきました。その搬出先の確保が、上関で計画が浮上した背景のひとつとされています。</p>
+    </div>
+
+    <div class="qa">
+      <h3><span>Q.</span>日本に他にもある？</h3>
+      <p>原発の敷地外にある中間貯蔵施設は、青森県むつ市の「リサイクル燃料備蓄センター」（東京電力と日本原子力発電の出資会社RFSが運営）が全国で唯一です。2024年9月に初めて使用済み燃料が搬入され、操業を開始しました。最終的な貯蔵容量は最大5,000トンの計画です。上関町に建設されれば、敷地外の施設としては全国2例目となります。なお、伊方原発や玄海原発など、各原発の敷地内での乾式貯蔵は別途進められています。</p>
+    </div>
+
+    <div class="qa">
+      <h3><span>Q.</span>「中間」って、何年のこと？</h3>
+      <p>むつ市の例では、青森県・むつ市・事業者の間で結ばれた安全協定により、貯蔵期間は50年とされ、期限までに搬出することが定められています（キャスク1基ごとにも最長50年）。上関の施設について中国電力はまだ具体的な事業計画を示しておらず、貯蔵期間・容量とも未定です。</p>
+      <p>ただし搬出先である再処理工場が前述の状態のため、「期限が来ても本当に出ていくのか」「事実上の恒久保管にならないか」という懸念が、むつでも上関でも反対派の最大の論点になっています。一方、推進側は「再処理までの一時保管であり、乾式貯蔵の技術は国内外で確立している」と説明しています。</p>
+    </div>
+
+    <div class="qa">
+      <h3><span>Q.</span>最終処分場は決まっている？</h3>
+      <p>決まっていません。再処理後に残る高レベル放射性廃棄物（いわゆる「核のごみ」）を地下深くに埋める地層処分場は、候補地選定の最初の段階である「文献調査」が北海道の寿都町・神恵内村（2020年〜）と佐賀県玄海町（2024年〜）で行われた段階です。次の「概要調査」に進むには知事と首長の同意が必要ですが、北海道知事は反対を表明しており、処分地決定の見通しは立っていません。</p>
+      <p>つまり現状の日本では、「中間貯蔵 → 再処理 → 最終処分」という流れの、再処理と最終処分の両方が動いていない状態です。この事実は、中間貯蔵施設を「必要な現実解」と見るか「出口のない先送り」と見るか、賛否それぞれの主張の土台になっています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 賛否の主張 -->
+<section class="voices" id="voices">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">TWO VOICES</p>
+      <h2>ふたつの声</h2>
+      <p>推進・反対それぞれの立場が実際に掲げてきた主な主張を、同じ分量で併記します。どちらの主張にも、町の暮らしへの切実な思いがあります。</p>
+    </div>
+    <div class="vs">
+      <div class="voice pro">
+        <h3><span class="dot" aria-hidden="true"></span>推進派の主張</h3>
+        <p class="who">町執行部と、誘致・推進運動の中心となってきた「推進6団体」</p>
+        <div class="orglist">
+          <strong>推進6団体</strong><br>
+          上関町まちづくり連絡協議会／上関町商工会／上関町商工事業協同組合／上関町建設業協同組合／漁業振興問題連絡協議会／上関原電推進議員会
+        </div>
+        <ul>
+          <li>電源三法交付金や固定資産税により、悪化した町財政を立て直し、行政サービスを維持できる</li>
+          <li>建設工事や関連雇用による経済効果で、進行する過疎・高齢化に歯止めをかけたい</li>
+          <li>これまでも交付金・寄付金（中国電力から計24億円の寄付など）が医療費助成や生活支援に使われてきた実績がある</li>
+          <li>中間貯蔵施設は調査の結果「活断層は認められない」とされており、安全に立地できる</li>
+        </ul>
+      </div>
+      <div class="voice con">
+        <h3><span class="dot" aria-hidden="true"></span>反対派の主張</h3>
+        <p class="who">祝島の住民を中心とする反対運動の団体と、環境保護・県域の団体</p>
+        <div class="orglist">
+          <strong>主な反対団体</strong><br>
+          上関原発を建てさせない祝島島民の会／原発に反対する上関町民の会／上関の自然を守る会（旧・長島の自然を守る会）／上関原発を建てさせない山口県民連絡会
+        </div>
+        <ul>
+          <li>予定地の目の前・約3.5kmに祝島の集落があり、事故時の避難や農水産物への影響が深刻になる</li>
+          <li>周辺海域はスナメリやカンムリウミスズメなど希少生物が生息する豊かな漁場で、埋立てや温排水が自然と漁業を損なう</li>
+          <li>周辺に活断層が存在する可能性が指摘されており、安全性への疑問が拭えない</li>
+          <li>核燃料サイクルの見通しが立たないなか、中間貯蔵施設が「中間」でなくなり長期保管が固定化するおそれがある</li>
+        </ul>
+      </div>
+    </div>
+    <p class="even">※両論の記載順・分量は等しくなるよう構成しています。個々の主張の当否をこのサイトが判定するものではありません。</p>
+  </div>
+</section>
+
+<!-- 争点：活断層 -->
+<section class="fault" id="fault">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">KEY ISSUE</p>
+      <h2>活断層は、ある。</h2>
+      <p>予定地周辺の海域に活断層が存在することは、国の研究機関・産総研の調査で確認されました。ただし正確に言えば、確認されたのは「周辺海域」の断層帯であり、「敷地内」については事業者が「認められない」としています。残る争点は、この事実の評価です。</p>
+    </div>
+    <div class="panel">
+      <p style="font-size:14.5px;color:var(--ink-soft);max-width:760px;">
+        まず前提として、<strong>予定地周辺の海域に活断層が存在すること自体は、国の研究機関の調査で確認された事実です</strong>（下記）。
+        原発計画の当初から反対派や地質研究者が指摘してきた懸念は、この点では裏づけられた形です。
+        一方、中国電力は敷地内の掘削調査（2024年終了）の分析を経て、2025年8月に「敷地に活断層は認められない」とする報告書を町に提出しています。
+        現在の争点は「断層があるかどうか」ではなく、<strong>「周辺の断層帯の存在が、立地の可否にどう影響するか」という評価</strong>に移っています。
+      </p>
+
+      <div style="margin-top:26px;padding:26px 28px;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--sea);">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.24em;color:var(--sea);">確認された事実　2026年・産総研</p>
+        <h4 style="font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:.05em;margin:6px 0 10px;">「防予諸島断層帯」── 上関沖に延びる海底活断層</h4>
+        <p style="font-size:14.5px;color:var(--ink-soft);">
+          産業技術総合研究所（産総研）の調査により、山口県周防大島町の周辺から大分県・国東半島沖に延びる海底活断層「防予諸島断層帯」（仮称）は、長さ60km以上（最大70〜75kmの可能性）で、最大でM7.8〜7.9規模の地震を起こしうることが確認されました。産総研は上関町沖でも海底ボーリング調査を実施しています。
+        </p>
+        <p style="font-size:14.5px;color:var(--ink-soft);margin-top:10px;">
+          2026年1月に周防大島町の陸域で行われた掘削調査では、L字形に変形した地層とその下の断層が出現。分析の結果、この断層帯は過去2万1千年の間に少なくとも3回以上のM7以上の地震を起こしており、<strong>約7千〜1万年に1度の周期</strong>で大地震を引き起こすと推定されています。産総研は地震への備えを呼びかけています。
+        </p>
+        <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;">
+          ※この断層帯の存在自体は2009年ごろから知られていましたが、長さ・規模・活動周期がここまで具体的に示されたのは今回の調査が初めてです。この知見が原発・中間貯蔵施設の立地評価にどう反映されるかは、今後の審査・議論の対象となります。
+        </p>
+      </div>
+
+      <figure style="margin:26px 0 0;">
+        <svg viewBox="0 0 760 380" role="img" aria-label="上関町周辺と防予諸島断層帯の位置関係の概略図" style="width:100%;height:auto;display:block;background:var(--con-bg);border:1px solid var(--line);">
+          <!-- 海 -->
+          <text x="20" y="34" font-size="13" fill="var(--con)" letter-spacing="4" font-weight="700">瀬戸内海（伊予灘）</text>
+          <!-- 本州側陸地 -->
+          <path d="M0,0 L760,0 L760,56 C640,72 540,60 470,84 C420,100 380,92 320,110 C240,132 150,118 80,140 C40,152 10,148 0,156 Z" fill="var(--paper-deep)" stroke="var(--line)"/>
+          <text x="120" y="70" font-size="15" fill="var(--ink)" font-weight="700">本州（山口県）</text>
+          <text x="320" y="88" font-size="12" fill="var(--ink-soft)">田布施町・柳井市 など</text>
+          <!-- 周防大島 -->
+          <ellipse cx="620" cy="150" rx="95" ry="34" fill="var(--paper-deep)" stroke="var(--line)"/>
+          <text x="560" y="155" font-size="14" fill="var(--ink)" font-weight="700">周防大島</text>
+          <!-- 長島（上関） -->
+          <path d="M150,200 C200,182 280,192 320,210 C300,236 240,244 190,236 C160,230 140,214 150,200 Z" fill="var(--paper-deep)" stroke="var(--line)"/>
+          <text x="196" y="222" font-size="14" fill="var(--ink)" font-weight="700">長島（上関町）</text>
+          <!-- 予定地マーカー -->
+          <circle cx="158" cy="207" r="7" fill="var(--pro)"/>
+          <text x="60" y="192" font-size="12.5" fill="var(--ink)" font-weight="700">原発・中間貯蔵施設</text>
+          <text x="60" y="207" font-size="12.5" fill="var(--ink)" font-weight="700">予定地（田ノ浦）</text>
+          <!-- 祝島 -->
+          <ellipse cx="105" cy="290" rx="42" ry="24" fill="var(--paper-deep)" stroke="var(--line)"/>
+          <text x="80" y="295" font-size="14" fill="var(--ink)" font-weight="700">祝島</text>
+          <line x1="152" y1="212" x2="118" y2="270" stroke="var(--ink-soft)" stroke-dasharray="3 4"/>
+          <text x="140" y="252" font-size="11.5" fill="var(--ink-soft)">約3.5km</text>
+          <!-- 断層帯 -->
+          <path d="M700,120 C600,180 440,240 300,290 C220,318 140,340 60,356" fill="none" stroke="#b3261e" stroke-width="4" stroke-dasharray="14 9" opacity=".85"/>
+          <text x="330" y="322" font-size="14" fill="#b3261e" font-weight="800">防予諸島断層帯（仮称）</text>
+          <text x="330" y="340" font-size="12" fill="#b3261e">長さ60km以上・最大M7.8〜7.9（産総研）</text>
+          <text x="30" y="372" font-size="11" fill="var(--ink-soft)">↙ 国東半島沖（大分県）へ</text>
+        </svg>
+        <figcaption style="font-size:11.5px;color:var(--ink-soft);margin-top:8px;">位置関係の概略図（当サイト作成）。地形・距離・断層の位置は正確な縮尺ではありません。正確な位置は産総研の公表資料をご確認ください。</figcaption>
+      </figure>
+
+      <p style="font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:.06em;margin-top:30px;">では、この事実をどう評価するか ── ここが対立点です</p>
+      <div class="claims">
+        <div class="claim a">
+          <h4>立地をやめるべき根拠になる（反対派・慎重派の評価）</h4>
+          <p>M7.8〜7.9規模の地震を起こしうる活断層帯が近海にある以上、原子力施設の立地はリスクが大きすぎるとする立場です。長年の指摘が産総研の調査で裏づけられたと受け止めています。なお、2020年に中国電力が予定した海上ボーリングによる断層の活動時期調査は、抗議活動などにより中断したまま完了していません。</p>
+        </div>
+        <div class="claim b">
+          <h4>耐震設計で対応できる範囲（中国電力側の評価）</h4>
+          <p>敷地内には活断層は認められず硬い岩盤が分布しており（2025年8月報告）、周辺の断層による揺れは耐震設計上の想定（最大M8.6）で対応できるとする立場です。原発本体については、福島事故後の新規制基準にもとづく国の審査は行われていません。</p>
+        </div>
+      </div>
+      <p class="caveat">
+        この評価の対立に決着をつけるのは、最終的には原子力規制委員会の審査です。防予諸島断層帯の新たな知見（長さ・規模・活動周期）が耐震評価の前提にどう反映されるかが、今後の最大の焦点になります。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 人口構成 -->
+<section class="demo" id="population">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">DEMOGRAPHY</p>
+      <h2>町のいま ── 人口構成</h2>
+      <p>この問題の背景には、半世紀にわたって進んできた人口減少と高齢化があります。総人口2,269人（2024年1月1日・住民基本台帳）の内訳です。</p>
+    </div>
+
+    <div class="demo-bar" role="img" aria-label="65歳以上58.7%、15〜64歳約35%、14歳以下約6%">
+      <div class="demo-seg old" style="width:58.7%">
+        <span class="pct">58.7%</span><span class="cat">65歳以上</span>
+      </div>
+      <div class="demo-seg mid" style="width:35.2%">
+        <span class="pct">約35%</span><span class="cat">15〜64歳</span>
+      </div>
+      <div class="demo-seg young" style="width:6.1%">
+        <span class="pct">6%</span><span class="cat">14歳以下</span>
+      </div>
+    </div>
+    <p class="demo-cap">出典：住民基本台帳（2024年1月1日時点）。15〜64歳・14歳以下は「高齢者1人に対し生産年齢人口0.6人」の比率から算出した概数です。</p>
+
+    <div class="demo-grid">
+      <div class="demo-txt">
+        <p>
+          町民の<strong>1.7人に1人が65歳以上</strong>、2.9人に1人が75歳以上。高齢化率は全国平均（約29%）の2倍を超え、「限界自治体」の目安とされる50%を大きく上回っています。高齢者1人を生産年齢人口0.6人で支える計算で、全国平均（約2.1人で1人）と比べても突出しています。
+        </p>
+        <p>
+          進学や就職を機に若い世代が町外へ流出する傾向が続き、出産・子育ての中心となる20〜39歳の女性は105人、総人口の4.2%（全国平均10.3%）にとどまります。税収の減少と高齢者福祉の負担増が町財政を圧迫するなか、「原子力関連施設の交付金に頼るのか、別の道を探すのか」という選択が、この人口構造の上に置かれています。
+        </p>
+        <div class="trend" aria-label="高齢化率の推移">
+          <p style="font-family:var(--serif);font-weight:700;font-size:14px;letter-spacing:.08em;color:var(--ink);">高齢化率の推移</p>
+          <div class="trend-row"><span class="y">2015年</span><span class="bar"><i style="width:53.7%"></i></span><span class="p">53.7%</span></div>
+          <div class="trend-row"><span class="y">2020年</span><span class="bar"><i style="width:56.4%"></i></span><span class="p">56.4%</span></div>
+          <div class="trend-row"><span class="y">2024年</span><span class="bar"><i style="width:58.7%"></i></span><span class="p">58.7%</span></div>
+          <p class="demo-cap">2015・2020年は国勢調査、2024年は住民基本台帳ベース。</p>
+        </div>
+      </div>
+      <div>
+        <div class="demo-facts">
+          <div class="demo-fact"><p class="v">2,269<small>人</small></p><p class="k">総人口（2024年1月1日）<br>男性1,073人・女性1,196人</p></div>
+          <div class="demo-fact"><p class="v">1.7<small>人に1人</small></p><p class="k">65歳以上の割合<br>（全国平均は約3.4人に1人）</p></div>
+          <div class="demo-fact"><p class="v">2.9<small>人に1人</small></p><p class="k">75歳以上の割合</p></div>
+          <div class="demo-fact"><p class="v">4.2<small>%</small></p><p class="k">20〜39歳女性の割合<br>（全国平均10.3%）</p></div>
+        </div>
+        <p class="demo-cap" style="margin-top:14px;">
+          高齢化が進むほど、投票する世代の重心も上がります。町の将来を左右する選択が、どの世代の声を反映したものになるのか──それ自体がこの町の論点のひとつです。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 町の選択 -->
+<section id="choice">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">THE TOWN DECIDES</p>
+      <h2>町の選択 ── 数字で見る民意</h2>
+      <p>上関町では、原発計画をめぐる民意が選挙のたびに示されてきました。直近の町議会と、迫る町長選挙の構図です。</p>
+    </div>
+    <div class="choice-grid">
+      <div class="txt">
+        <p>
+          計画が具体化して以降、町長選・町議選では推進派が一貫して多数を占めてきました。得票率はおおむね「推進6：反対4」で固定化してきたと言われます。
+          ただし2000年の報道機関の世論調査では反対が賛成を上回った例もあり、票と民意が常に一致してきたとは限りません。
+        </p>
+        <p>
+          2026年2月、8年ぶりの選挙戦となった町議選では、中間貯蔵施設への賛成派が5人、反対派が3人、態度を明らかにしていない現職が2人当選しました。かつての「9対3」（2010年）と比べると、差は縮まっています。
+        </p>
+        <p>
+          そして2026年10月、町長の任期が満了します。中間貯蔵施設を受け入れるかどうかの判断はまだ示されておらず、次の町長選挙はその行方を大きく左右するとみられています。
+        </p>
+        <p>
+          民意は町の外にも広がっています。隣接する田布施町では2025年2月の町議選で建設反対を掲げた候補6人（定数12の半数）が当選し、翌3月に議会が建設反対を決議。決議は「建設の是非を上関町だけで判断することは許されない」としています。柳井市や周防大島町でも、反対決議や住民説明会を求める請願が議会に提出されるなど、周辺自治体を巻き込んだ議論が続いています。なお、田布施町でも2026年10月に町長選挙が予定されています。
+        </p>
+      </div>
+      <div>
+        <p style="font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.08em;">町議会の構成（2026年2月選挙・定数10）</p>
+        <div class="seats" role="img" aria-label="賛成5議席、反対3議席、態度未表明2議席">
+          <div class="seat p">賛</div><div class="seat p">賛</div><div class="seat p">賛</div><div class="seat p">賛</div><div class="seat p">賛</div>
+          <div class="seat c">反</div><div class="seat c">反</div><div class="seat c">反</div>
+          <div class="seat u">未</div><div class="seat u">未</div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--pro)"></i>中間貯蔵施設に賛成　5</span>
+          <span><i style="background:var(--con)"></i>反対　3</span>
+          <span><i style="background:#9aa8ae"></i>無回答　2</span>
+        </div>
+        <p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px;">出典：報道各社の候補者アンケート（2026年2月22日投開票）。投票率78.86％。</p>
+      </div>
+    </div>
+    <div class="members">
+      <h3>上関町議会議員名簿（2026年2月22日当選・定数10）</h3>
+      <p class="note">
+        中間貯蔵施設建設計画への賛否は、報道各社が告示前に実施した候補者アンケートと、当選時の報道にもとづきます。集計上は「賛成5・反対3・無回答2」ですが、全員分の個別回答は公表報道で確認できた範囲のみ記載し、確認できていない議員は「賛否・報道未確認」としています。誤りにお気づきの方はご指摘ください。
+      </p>
+      <table>
+        <thead>
+          <tr><th>氏名（年齢）</th><th>中間貯蔵施設への立場</th><th>得票数</th><th>備考</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>岩木 和美（66）</td><td><span class="pill unk">賛否・報道未確認</span></td><td class="v">166票</td><td>現職</td></tr>
+          <tr><td>海下 竜一郎（61）</td><td><span class="pill unk">賛否・報道未確認</span></td><td class="v">161票</td><td>現職</td></tr>
+          <tr><td>古泉 直紀（67）</td><td><span class="pill unk">賛否・報道未確認</span></td><td class="v">157票</td><td>現職</td></tr>
+          <tr><td>柏田 真一（50）</td><td><span class="pill pro">賛成</span></td><td class="v">138票</td><td>現職。当選時「財源確保のため施策を進めたい」</td></tr>
+          <tr><td>清水 康博（35）</td><td><span class="pill con">反対</span></td><td class="v">137票</td><td>現職。従来から反対の立場で活動</td></tr>
+          <tr><td>国弘 秀人（63）</td><td><span class="pill con">反対</span></td><td class="v">135票</td><td>新人。当選時「上関に持ってくるべきものではない」</td></tr>
+          <tr><td>山谷 良数（74）</td><td><span class="pill unk">賛否・報道未確認</span></td><td class="v">130票</td><td>現職</td></tr>
+          <tr><td>右田 千賀子（79）</td><td><span class="pill unk">賛否・報道未確認</span></td><td class="v">111票</td><td>現職</td></tr>
+          <tr><td>山戸 孝（48）</td><td><span class="pill con">反対</span></td><td class="v">108票</td><td>現職。祝島出身、長年反対の立場で活動</td></tr>
+          <tr><td>秋山 鈴明（33）</td><td><span class="pill unk">賛否・報道未確認</span></td><td class="v">100票</td><td>現職</td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:12px;">
+        ※年齢・得票数は投票日時点（山口朝日放送・KRY山口放送の開票報道より）。全員無所属。西哲夫町長は選挙結果を受け「議会構成は賛成6・反対4になると思う」との見方を示しています。町長本人は推進の立場で、2022年の町長選で約7割の得票により初当選しました。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 出典 -->
+<section class="sources" id="sources">
+  <div class="wrap">
+    <h2>出典・参考情報</h2>
+    <ol>
+      <li>Wikipedia「上関原子力発電所」（計画の概要、推進6団体、選挙の推移、賛否の主張、交付金・寄付金 ほか）</li>
+      <li>中国新聞ヒロシマ平和メディアセンター「イチからわかる 中間貯蔵施設」（2025年8月／計画浮上の背景、町財政、110億円超の資金）</li>
+      <li>日本経済新聞（2020年12月 海底地質調査の中断、2024年11月 掘削調査終了、2026年2月 町議選結果）</li>
+      <li>テレビ新広島・日刊工業新聞（2025年8〜9月／中国電力「立地は可能」「活断層認められず」報告）</li>
+      <li>山口朝日放送・KRY山口放送・毎日新聞・中国新聞（2026年2月／町議選の開票結果、当選者の氏名・年齢・得票数、候補者アンケートの賛否集計、当選者コメント）</li>
+      <li>原子力資料情報室（CNIC）「上関中間貯蔵施設計画は撤回されるべき」（2024年／中間貯蔵施設計画の経緯・周辺自治体の反応 ※反対の立場からの資料）</li>
+      <li>山口県ホームページ（知事意見、公有水面埋立免許、市町選挙の任期満了日一覧）</li>
+      <li>青森県・むつ市公式資料、東京新聞、原子力産業新聞（むつ市リサイクル燃料備蓄センターの概要・貯蔵期間50年の安全協定・2024年9月搬入開始、六ヶ所再処理工場の完成延期27回・2026年度中目標、地層処分の文献調査の状況、国内の使用済み燃料約1万9,000トン・六ヶ所受入プールの逼迫、関西電力の使用済み燃料県外搬出方針）</li>
+      <li>選挙ドットコム（上関町長選挙・町議会議員選挙・田布施町長選挙の日程情報）</li>
+      <li>住民基本台帳にもとづく人口統計（2024年1月1日時点／総人口・年齢構成・高齢化率）、総務省国勢調査（2015年・2020年）、上関町人口ビジョン（2020年改訂版）</li>
+      <li>山口新聞・山口朝日放送・TBS系（tysテレビ山口）ほか（2025年3月／田布施町議会が中間貯蔵施設への反対決議を可決、周辺自治体議会で初）</li>
+      <li>朝日新聞「瀬戸内海の断層帯『7千～1万年に一度の大地震』産総研が陸域調査」（2026年3月／防予諸島断層帯の長さ・規模・活動周期、上関町沖での海底ボーリング調査）</li>
+      <li>毎日新聞（2026年／産総研による燧灘の海底活断層確認の報道）</li>
+    </ol>
+    <p class="policy">
+      <strong>編集方針：</strong>本サイトは特定の立場を支持・推奨するものではありません。賛否の主張は、それぞれの立場が公に表明してきた内容を同等の分量で紹介しています。
+      事実関係は公開報道・公的資料にもとづきますが、状況は変化し続けているため、最新の情報は町・県・事業者・報道各社の一次情報をご確認ください。
+      誤りのご指摘や情報のご提供を歓迎します。
+    </p>
+  </div>
+</section>
+
+<footer>
+  上関原発ドキュメント ── 判断は、事実を知ることから。
+</footer>
+
+<script>
+(function(){
+  // 任期満了日。正式な投票日が決まったらここを変更してください。
+  var KAMINOSEKI_TARGET = new Date("2026-10-22T00:00:00+09:00"); // 上関町長 任期満了
+  var KAMINOSEKI_START  = new Date("2022-10-23T00:00:00+09:00"); // 前回選挙（就任基準）
+  var TABUSE_TARGET     = new Date("2026-11-14T00:00:00+09:00"); // 田布施町長 任期満了
+
+  var elDays = document.getElementById("cd-days");
+  var elHms  = document.getElementById("cd-hms");
+  var elTide = document.getElementById("tide");
+  var el2Days = document.getElementById("cd2-days");
+  var el2Hms  = document.getElementById("cd2-hms");
+
+  function pad(n){ return (n<10?"0":"")+n; }
+
+  function render(target, dEl, hEl){
+    var now = new Date();
+    var diff = target - now;
+    if (diff <= 0){
+      dEl.textContent = "0";
+      hEl.textContent = "任期満了日を迎えました";
+      return;
+    }
+    var days = Math.floor(diff / 86400000);
+    var h = Math.floor(diff % 86400000 / 3600000);
+    var m = Math.floor(diff % 3600000 / 60000);
+    var s = Math.floor(diff % 60000 / 1000);
+    dEl.textContent = days;
+    hEl.textContent = "あと " + pad(h) + " 時間 " + pad(m) + " 分 " + pad(s) + " 秒";
+  }
+
+  function tick(){
+    render(KAMINOSEKI_TARGET, elDays, elHms);
+    render(TABUSE_TARGET, el2Days, el2Hms);
+
+    var now = new Date();
+    var total = KAMINOSEKI_TARGET - KAMINOSEKI_START;
+    var passed = now - KAMINOSEKI_START;
+    var pct = Math.min(100, Math.max(0, passed / total * 100));
+    elTide.style.width = pct.toFixed(2) + "%";
+
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
